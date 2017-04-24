@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DWKDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AddLegalWord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wrd">
+          <Parameter Name="LegalWord" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddPlayer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wrd">
+          <Parameter Name="Moniker" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="FindWords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wrd">
+          <Parameter Name="Board" Type="xml" Mode="In" />
+        </Function>
+        <Function Name="GameOver" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wrd">
+          <Parameter Name="GameID" Type="int" Mode="In" />
+          <Parameter Name="PlayerID" Type="int" Mode="In" />
+          <Parameter Name="GameTimeMilli" Type="bigint" Mode="In" />
+          <Parameter Name="CompletedBoard" Type="xml" Mode="In" />
+        </Function>
+        <Function Name="GetBoard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wrd">
+          <Parameter Name="GamePlayerID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGamesByPlayerID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wrd">
+          <Parameter Name="PlayerID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPlayer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wrd">
+          <Parameter Name="PlayerGuidChar" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="DWKDBModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DWKDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DWKDBEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="AddLegalWord">
+          <Parameter Name="LegalWord" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddPlayer" ReturnType="Collection(DWKDBModel.AddPlayer_Result)">
+          <Parameter Name="Moniker" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPlayer" ReturnType="Collection(DWKDBModel.GetPlayer_Result)">
+          <Parameter Name="PlayerGuidChar" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FindWords" ReturnType="Collection(DWKDBModel.FindWords_Result)">
+          <Parameter Name="Board" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBoard" ReturnType="Collection(DWKDBModel.GetBoard_Result)">
+          <Parameter Name="GamePlayerID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GameOver" ReturnType="Collection(DWKDBModel.GameOver_Result)">
+            <Parameter Name="GameID" Mode="In" Type="Int32" />
+            <Parameter Name="PlayerID" Mode="In" Type="Int32" />
+            <Parameter Name="GameTimeMilli" Mode="In" Type="Int64" />
+            <Parameter Name="CompletedBoard" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGamesByPlayerID" ReturnType="Collection(DWKDBModel.GetGamesByPlayerID_Result)">
+            <Parameter Name="PlayerID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetGameInfo_Result">
+          <Property Type="Int32" Name="GameID" Nullable="false" />
+          <Property Type="Guid" Name="GameGuid" Nullable="false" />
+          <Property Type="Boolean" Name="IsStarted" Nullable="false" />
+          <Property Type="Int32" Name="PlayerCount" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Winner" Nullable="true" />
+          <Property Type="Int32" Name="PlayerNum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="JoinGame_Result">
+          <Property Type="String" Name="GameGuid" Nullable="true" MaxLength="36" />
+          <Property Type="Int32" Name="PlayerNum" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetGameData_Result">
+          <Property Type="Int32" Name="GameID" Nullable="false" />
+          <Property Type="Boolean" Name="IsStarted" Nullable="false" />
+          <Property Type="Int32" Name="PlayerCount" Nullable="false" />
+          <Property Type="Int32" Name="Winner" Nullable="true" />
+          <Property Type="Int32" Name="RemainingTileCount" Nullable="true" />
+          <Property Type="Int32" Name="MinLetterID" Nullable="true" />
+          <Property Type="Int32" Name="MaxLetterID" Nullable="true" />
+          <Property Type="Int32" Name="LetterDataID" Nullable="true" />
+          <Property Type="String" Name="Letter" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="PlayerNum" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="6" />
+        </ComplexType>
+        <ComplexType Name="AddPlayer_Result">
+          <Property Type="String" Name="PlayerGuid" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetPlayer_Result">
+          <Property Type="Int32" Name="PlayerID" Nullable="false" />
+          <Property Type="String" Name="Moniker" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="HasPaid" Nullable="false" />
+          <Property Type="Int32" Name="GameID" Nullable="false" />
+          <Property Type="String" Name="Letters" Nullable="false" MaxLength="144" />
+        </ComplexType>
+        <ComplexType Name="FindWords_Result">
+          <Property Type="String" Name="Word" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetBoard_Result">
+          <Property Type="String" Name="Loc" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Letter" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="GameOver_Result">
+          <Property Type="Int64" Name="Ranking" Nullable="true" />
+          <Property Type="Int32" Name="GamePlayerID" Nullable="false" />
+          <Property Type="String" Name="Moniker" Nullable="false" MaxLength="20" />
+          <Property Type="Int64" Name="GameTimeMilli" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetGamesByPlayerID_Result">
+          <Property Type="Int32" Name="GameID" Nullable="false" />
+          <Property Type="Int64" Name="GameTimeMilli" Nullable="false" />
+          <Property Type="Int64" Name="Ranking" Nullable="true" />
+          <Property Type="Int32" Name="GamePlayerID" Nullable="false" />
+          <Property Type="String" Name="Moniker" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="RecordType" Nullable="false" MaxLength="11" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DWKDBModelStoreContainer" CdmEntityContainer="DWKDBEntities" >
+          <FunctionImportMapping FunctionImportName="AddLegalWord" FunctionName="DWKDBModel.Store.AddLegalWord" />
+          <FunctionImportMapping FunctionImportName="AddPlayer" FunctionName="DWKDBModel.Store.AddPlayer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DWKDBModel.AddPlayer_Result">
+                <ScalarProperty Name="PlayerGuid" ColumnName="PlayerGuid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPlayer" FunctionName="DWKDBModel.Store.GetPlayer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DWKDBModel.GetPlayer_Result">
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="Moniker" ColumnName="Moniker" />
+                <ScalarProperty Name="HasPaid" ColumnName="HasPaid" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="Letters" ColumnName="Letters" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FindWords" FunctionName="DWKDBModel.Store.FindWords">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DWKDBModel.FindWords_Result">
+                <ScalarProperty Name="Word" ColumnName="Word" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBoard" FunctionName="DWKDBModel.Store.GetBoard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DWKDBModel.GetBoard_Result">
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GameOver" FunctionName="DWKDBModel.Store.GameOver">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DWKDBModel.GameOver_Result">
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="GamePlayerID" ColumnName="GamePlayerID" />
+                <ScalarProperty Name="Moniker" ColumnName="Moniker" />
+                <ScalarProperty Name="GameTimeMilli" ColumnName="GameTimeMilli" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGamesByPlayerID" FunctionName="DWKDBModel.Store.GetGamesByPlayerID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DWKDBModel.GetGamesByPlayerID_Result">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="GameTimeMilli" ColumnName="GameTimeMilli" />
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="GamePlayerID" ColumnName="GamePlayerID" />
+                <ScalarProperty Name="Moniker" ColumnName="Moniker" />
+                <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

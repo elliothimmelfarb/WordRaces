@@ -1,0 +1,256 @@
+﻿
+
+html, body {
+    margin:0px;
+    padding:0px;
+    position:relative;
+    background-color:black;
+}
+
+#TopDiv{
+    position:fixed;
+    left:0px;top:0px;right:0px;
+    height:150px;
+    z-index:15;
+    background-color:moccasin;
+    margin-top:0px;
+    border:8px solid brown;
+    padding:5px;
+}
+
+/*------------------------------------*/
+
+.MainTitleBar{
+    background-color:brown;
+    padding-top:5px;
+    padding-left:5px;
+    padding-right:0px;
+    padding-bottom:5px;
+    border:transparent;
+    font-family:sans-serif;
+    font-size:20px;
+    color:moccasin;
+    overflow:hidden;
+}
+
+#MainTitle{
+
+}
+
+/*------------------------------------*/
+
+#NewPlayerDiv{
+    display:none;
+}
+
+#MonikerLabel{
+    margin-left:20px;
+    font-family:sans-serif;
+    color:brown;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+#Moniker{
+    margin-left:20px;
+    font-family:sans-serif;
+    color:brown;
+    font-size:16px;
+    width:330px;
+    padding:5px
+
+}
+
+#MonikerButton{    
+    margin-left:20px;  
+    margin-top:10px;
+    padding:10px;
+    border:2px solid brown;
+    background:moccasin;
+    color:brown;
+    font-weight:bold;
+}
+
+
+
+/*------------------------------------*/
+
+.ControlsContainer{
+    width:100%;
+    margin-top:7px;
+    height:115px;
+    overflow:auto;
+}
+
+/*------------------------------------*/
+
+.ControlPanel{
+}
+
+.ButtonRow1{    
+    width:6500px;
+}
+
+.ButtonRow2{
+    margin-top:5px;
+    width:6500px;
+}
+/*------------------------------------*/
+
+
+#TopLettersSpan{
+    margin-top:7px;
+    width:6500px;
+}
+
+#MessagesSpan{
+    font-family:sans-serif;
+    font-size:18px;
+    background-color: moccasin;
+    color: brown;
+    vertical-align:middle;
+}
+
+.TextLine1{
+    width:350px;
+    display:inline-block;
+}
+
+.TextLine2{
+    width:200px;
+    display:inline-block;
+}
+
+
+.Control{
+    margin-right:5px;
+    padding:10px;
+    border:2px solid brown;
+    background:moccasin;
+    color:brown;
+    font-weight:bold;
+}
+
+.CurrentPlayer{    
+    border:2px solid brown;
+    background:brown;
+    color:moccasin;
+}
+
+.Spacer01{
+    height:0px;
+}
+
+
+
+#BotDiv{
+    margin-top:200px;
+    margin-left:5px;
+    width:5500px;
+    padding:0px;
+}
+
+
+.RowDiv{
+    width:100%;
+    margin-bottom:-2px;
+}
+
+
+
+.Top_On{
+    width:40px;
+    height:40px;
+    font-size:23px;
+    background-color:moccasin;
+    color:brown;
+    border:2px solid brown;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+
+.Top_Off{
+    width:40px;
+    height:40px;
+    font-size:23px;
+    background-color:moccasin;
+    color:brown;
+    border:2px solid brown;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+
+
+.Bot_On{
+    width:40px;
+    height:40px;
+    font-size:23px;
+    background-color:moccasin;
+    color:brown;
+    border:2px dashed brown;
+    margin-left:-2px;
+}
+
+.Bot_Off{
+    width:40px;
+    height:40px;
+    font-size:23px;
+    border:2px dashed moccasin;
+    background-color:black;
+    color:brown;
+    margin-left:-2px;
+}
+
+.Selected{
+    background-color:burlywood;
+}
+
+.CenterLine{
+    background:brown;
+}
+
+.Blocker{
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    z-index:100;
+    opacity:.8;
+    background-color:black;
+    color:white;
+    padding-top:200px;
+    padding-left:50px;
+    font-family:sans-serif;
+    font-size:40px;
+    display:none;
+}
+
+#Blocker2 table{
+    position:fixed;
+    top:30px;
+    left:30px;
+    font-size:20px;
+    border:solid 2px white;
+    padding:10px;
+}
+
+#Blocker2 td{
+    padding:10px;
+}
+
+#Blocker2 .ButtonColumn{
+    text-align:center;
+}
+
+.BlockerButton{
+    background:white;
+    color:black;
+    font-weight:bold;
+    width:80%;
+    text-align:center;
+    padding:10px;
+}
+
+
+
